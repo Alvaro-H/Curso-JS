@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <title>
+            Maquetacion para curso de frameworks JS
+        </title>
+        <meta charset="utf-8"/>        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <!-- Hoja de estilos -->
+        <link rel="stylesheet" href="assets/css/styles.css">
+        <script type="text/javascript">
+            window.addEventListener("load", function(event){
+                var template = document.getElementById("article-template");
+                var articles = document.getElementById("articles");
+                for(var i = 1; i <= 5; i++){
+                    var clonado = template.cloneNode(true);
+                    clonado.removeAttribute("id"); 
+                    var h2 = clonado.getElementsByTagName("h2")[0];
+                    h2.innerHTML = h2.textContent + ' ' + i;
+                    articles.appendChild(clonado);
+
+                }
+            });
+        </script> 
+    </head>
+    <body>
+        <header id="header">
+            <div class="center">
+                <!-- LOGO -->
+                <div id="logo">
+                    <img src="assets/images/VUE.png" class="app-logo" alt="Logotipo"/>
+                    <span id="brand">
+                        <strong>Curso</strong>VUE
+                    </span>
+                </div>
+                <!-- MENU -->
+                <nav id="menu">
+                    <ul>
+                        <li>
+                            <a href="index.html">Inicio</a>
+                        </li>
+                        <li>
+                            <a href="blog.html">Blog</a>
+                        </li>
+                        <li>
+                            <a href="formulario.html">Fromulario</a>
+                        </li>
+                        <li>
+                            <a href="#">Página 1</a>
+                        </li>
+                        <li>
+                            <a href="#">Página 2</a>
+                        </li>
+                    </ul>
+
+                </nav>
+
+                <!--Limpiar flotados-->
+                <div class="clearfix">
+
+                </div>
+            </div>
+            
+        </header>
+
+        <div id="slider" class="slider-big">
+            <h1>Bienvenido al curso de frameworks: <strong>VUE</strong></h1>
+            <a href="#" class="btn-white">Ir al blog</a>
+            
+        </div>
+        <div class="center">
+            <section id="content">
+                <h2 class="subheader">Ultimos articulos</h2>
+                <!--Ultimos Articulos-->
+                <div id= articles>
+                    <article class="article-item" id="article-template">
+                        <div class="image-wrap">
+                            <img src="https://www.implaser.com/wp-content/uploads/2020/08/fachada-2020-1024x427.jpg" alt="Fachada implaser"/>
+                        </div>
+                        <h2>Articulo de prueba</h2>
+                        <span class="date">
+                            Hace 5 min.
+                        </span>
+                        <a href="#">Leer mas</a>
+                        <div class="clearfix"></div>
+                    </article>
+                    <!-- AÑADIR ARTICULOS CON JS -->
+                </div>
+
+            </section>
+
+            <aside id="sidebar">
+                <div id="nav-blog" class="sidebar-item">
+                    <h3>Puedes hacer esto</h3>
+                    <a href="#" class="btn btn-success"> Crear articulo</a>
+                </div>
+                <div id="search" class="sidebar-item">
+                    <h3>Buscador</h3>
+                    <p>Encuentra el articulo que buscas</p>
+                    <form>
+                        <input type="text" name="search"/>
+                        <input type="submit" name="submit" value="Buscar" class="btn"/>
+                    </form>
+                </div>
+            </aside>
+            <div class="clearfix">
+
+            </div>
+        </div>
+        <footer id="footer">
+            <div class="center">
+                <p>
+                    &copy; Master en frameworks JS
+                </p>
+                
+            </div>
+        </footer>
+    </body>
+</html>
