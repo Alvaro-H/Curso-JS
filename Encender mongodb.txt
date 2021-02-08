@@ -1,0 +1,2 @@
+En C:\Program Files\MongoDB\Server\4.4\bin ejecutar mongod.exe
+E  C:\Users\ahuerta\Desktop\Curso JS\Backend ejecutar npm start
