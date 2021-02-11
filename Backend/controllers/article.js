@@ -1,7 +1,9 @@
 'use strict'
 
 var validator = require('validator');
-const article = require('../models/article');
+
+var fs = require('fs');
+var path = require('path');
 var Article = require('../models/article');
 
 var controller= {
@@ -202,7 +204,105 @@ var controller= {
         return res.status(200).send({
             status: 'success',
             message: 'El artículo ' + articleId + ' ha sido eliminado!'
+        });
+    },
 
+    upload: (req, res) =>{
+        //Configurar el modulo connect multiparty en routes/article.js
+
+        //Recogemos el fichero de la peticio
+        var file_name = 'Imagen no subida.';
+        
+        if(!req.files){
+            return res.status(404).send({
+                status: 'error',
+                message: file_name
+            });
+        }
+
+        //Tomamos nombre y extension
+        var file_path = req.files.file0.path;
+        var file_split = file_path.split('\\');
+
+        //Comprobamos que sea una imagen mediante extension
+        var file_name = file_split[2];
+
+        //Extension del fichero
+        var extension_split = file_name.split('\.');
+        var file_ext = extension_split[1];
+        
+        //Si no es valida borramos fichero
+        if(file_ext != 'png' && file_ext != 'jpg' && file_ext != 'jpeg' && file_ext != 'gif' ){
+            //Borra el archivo
+            fs.unlink(file_path, (err) =>{
+                return res.status(200).send({
+                    status: 'error',
+                    message: 'La extension de la imagen es inválida',
+                });
+            });
+        }else{
+            //Si es válida, id del la url
+            var articleId= req.params.id;
+            //buscamos el articulo  y le asignamos nombre y imagen
+            Article.findOneAndUpdate({_id: articleId}, {image: file_name}, {new:true}, (err, articleUpdated) =>{
+                
+                if(err || !articleUpdated){
+                    return res.status(200).send({
+                        status: 'error',
+                        message: 'Error al guardar la imagen del artículo!'
+                    });
+                }
+                
+                return res.status(200).send({
+                    status: 'success',
+                    article: articleUpdated
+                });
+            });
+        }
+    },//End upload file
+
+    getImage: (req, res) => {
+        var file = req.params.image;
+        var path_file = './upload/articles/'+ file;
+        fs.exists(path_file, (exists) => {
+            console.log(exists);
+            if(exists){
+                return res.sendFile(path.resolve(path_file));
+            }else{
+                return res.status(404).send({
+                    status: 'error',
+                    message: 'La imagen no existe!'
+                });
+            }
+        });
+    },
+
+    search: (req, res) => {
+        //Sacar el string a buscar
+        var searchString = req.params.search;
+        //Find or
+        Article.find({ "$or":[
+            {"title": { "$regex": searchString, "$options": "i"}},
+            {"content": { "$regex": searchString, "$options": "i"}}
+        ]})
+        .sort([['date', 'descending']])
+        .exec((err, articles) => {
+            if(err){
+                return res.status(500).send({
+                    status: 'error',
+                    message: 'Error en la peticion!'
+                });
+            }
+            if(!articles || articles.length <= 0){
+                return res.status(404).send({
+                    status: 'error',
+                    message: 'No hay articulos que mostrar!'
+                });
+            }
+            return res.status(200).send({
+                status: 'success',
+                articles
+            });
         });
     }
 };//End controller
