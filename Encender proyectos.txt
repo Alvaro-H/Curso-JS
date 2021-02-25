@@ -1,0 +1,7 @@
+### Mongo DB ###
+En C:\Program Files\MongoDB\Server\4.4\bin ejecutar mongod.exe
+E  C:\Users\ahuerta\Desktop\Curso JS\Backend ejecutar npm start
+
+### Angular ###
+En la carpteta del proyecto de Angular (C:\Users\ahuerta\Desktop\Curso JS) Ejecutar ng serve
+ng g component components/(Nombre componente) -> Para crear componentes
