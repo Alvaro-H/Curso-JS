@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { routing, appRoutingProviders } from './app.routing';
 
 import { AppComponent } from './app.component';
 import { MiComponente } from './Components/mi-componente/mi-componente.component';
@@ -9,6 +10,11 @@ import { HeaderComponent } from './Components/header/header.component';
 import { SliderComponent } from './Components/slider/slider.component';
 import { SidebarComponent } from './Components/sidebar/sidebar.component';
 import { FooterComponent } from './Components/footer/footer.component';
+import { HomeComponent } from './Components/home/home.component';
+import { BlogComponent } from './Components/blog/blog.component';
+import { FormularioComponent } from './Components/formulario/formulario.component';
+import { PaginaComponent } from './Components/pagina/pagina.component';
+import { ErrorComponent } from './Components/error/error.component';
 
 @NgModule({
   declarations: [
@@ -19,12 +25,18 @@ import { FooterComponent } from './Components/footer/footer.component';
     HeaderComponent,
     SliderComponent,
     SidebarComponent,
-    FooterComponent
+    FooterComponent,
+    HomeComponent,
+    BlogComponent,
+    FormularioComponent,
+    PaginaComponent,
+    ErrorComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    routing,
   ],
-  providers: [],
+  providers: [appRoutingProviders],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
