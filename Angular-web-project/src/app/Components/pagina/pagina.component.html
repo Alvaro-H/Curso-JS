@@ -1,1 +1,25 @@
-<p>pagina works!</p>
+<h1 class="subheader">Página de pruebas</h1>
+<!-- If nombre y apellidos existen:
+<div *ngIf="nombre && apellidos">
+    <h2>El nombre es: {{nombre}}</h2>
+    <h2>El apellido es es: {{apellidos}}</h2>
+</div>
+Else si no existen:
+<div *ngIf="!nombre || !apellidos">
+    <h2>No hay parámetros por la URL.</h2>
+</div> -->
+
+<!-- Esto es lo mismo que antes -->
+<div *ngIf="nombre && apellidos; then siHayParametros else noHayParametros">
+</div>
+
+<ng-template #siHayParametros>
+    <h2>El nombre es: {{nombre}}</h2>
+    <h2>El apellido es es: {{apellidos}}</h2>
+</ng-template>
+
+<ng-template #noHayParametros>
+    <h2>No hay parámetros por la URL.</h2>
+</ng-template>
+
+<button (click)="redireccion()">Llevame al formulario</button>

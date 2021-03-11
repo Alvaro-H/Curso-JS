@@ -89,8 +89,28 @@ body {
     transition: 300ms all;
 }
 
-#menu a:hover{
-    color:#f13e3e;
+#menu a:hover,
+.active{
+    color:#f13e3e !important;
+}
+
+.year-green{
+    background: green;
+    color: white;
+
+    display: block;
+    width: 88px;
+    text-align: center;
+}
+
+
+.year-red{
+    background: red;
+    color: white;
+
+    display: block;
+    width: 88px;
+    text-align: center;
 }
 
 #slider{
@@ -276,11 +296,12 @@ textarea{
     overflow: hidden;
     float:left;
     margin-right: 15px;
-    border: 1px solid #ccc;
+    /* border: 1px solid #ccc; */
 }
 
 .article-item .image-wrap img {
     height: 100%;
+    width: 88px;
     text-align: center;
 }
 

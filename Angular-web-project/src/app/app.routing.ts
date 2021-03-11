@@ -17,7 +17,12 @@ const appRoutes: Routes = [
     {path: 'blog', component: BlogComponent},
     {path: 'formulario', component: FormularioComponent},
     {path: 'peliculas', component: PeliculasComponent},
-    {path: 'pagina-de-pruebas', component: PaginaComponent},
+    //Parametro opcional
+    //{path: 'pagina-de-pruebas', component: PaginaComponent},
+    //Parametro obligatorio
+    //{path: 'pagina-de-pruebas/:nombre', component: PaginaComponent},
+    //Varios parametros obligatorios
+    {path: 'pagina-de-pruebas/:nombre/:apellidos', component: PaginaComponent},
     {path: '**', component: ErrorComponent}
 ];
 
