@@ -1,30 +1,21 @@
-<h1 class="subheader">Peliculas</h1>
+<app-slider [nombre]="'Péliculas'" [size]= "'small'"></app-slider>
 
-<h2>Pelicula:</h2>
-{{peliculas[0].title}}
-<hr>
+<div class="center">
+  <section id="content">
+    <h1 class="subheader">Peliculas</h1>
 
-<h2>Listado de películas</h2>
-<div id="articles" *ngIf="peliculas">
-    <article class="article-item" *ngFor="let pelicula of peliculas; let i index">
-        <div class="image-wrap">
-            <img src="{{pelicula.image}}" alt="{{pelicula.title}}"/>
-        </div>
-        <h2>{{pelicula.title}}</h2>
-        <!-- Son dos formas de hacer lo mismo -->
-        <!-- <span class="year" [class.background] = "pelicula.year > 2015 ? 'green' : 'red'">
-            {{pelicula.year}}
-        </span> -->
-        <!-- Es lo mismo tambien 
-            <span class="year" [class.year-red] = "pelicula.year > 2016"
-            [class.year-green] = "pelicula.year < 2016" -->
-        <span class="year" [ngClass]="{
-                               'year-green':pelicula.year > 2016,
-                               'year-red':pelicula.year < 2016
-                           }">
-            {{pelicula.year}}
-        </span>
-        <a href="#">Leer mas</a>
-        <div class="clearfix"></div>
-    </article>
+    <h2>Pelicula:</h2>
+    {{ peliculas[0].title }}
+    <hr />
+
+    <h2>Listado de películas</h2>
+    <div id="articles" *ngIf="peliculas">
+      <div  *ngFor="let pelicula of peliculas; let i; index">
+        <app-pelicula>
+          [pelicula]="pelicula"
+        </app-pelicula>
+      </div>
+    </div>
+  </section>
+  <app-sidebar></app-sidebar>
 </div>

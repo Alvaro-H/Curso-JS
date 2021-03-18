@@ -11,7 +11,7 @@ export class PaginaComponent implements OnInit {
   public nombre: string = "";
   public apellidos: string = "";
 
-  //Constructor de l a variable que coge la info de la URL
+  //Constructor de la variable que coge la info de la URL
   constructor(
     private _route: ActivatedRoute,
     private _router: Router

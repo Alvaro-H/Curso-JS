@@ -15,6 +15,7 @@ import { BlogComponent } from './Components/blog/blog.component';
 import { FormularioComponent } from './Components/formulario/formulario.component';
 import { PaginaComponent } from './Components/pagina/pagina.component';
 import { ErrorComponent } from './Components/error/error.component';
+import { PeliculaComponent } from './components/pelicula/pelicula.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { ErrorComponent } from './Components/error/error.component';
     BlogComponent,
     FormularioComponent,
     PaginaComponent,
-    ErrorComponent
+    ErrorComponent,
+    PeliculaComponent
   ],
   imports: [
     BrowserModule,
